@@ -1,20 +1,73 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
+import axios from 'axios';
+
+const initialValues = {
+    username: "",
+    password: "",
+}
 
 const Login = () => {
+    const [formValues, setFormValues] = useState(initialValues);
+    const [error, setError] = useState("")
+    const { push } = useHistory();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+            axios.post("http://localhost:5000/api/login", formValues)
+            .then(res => {
+                
+                localStorage.setItem("token", res.data.payload);
+            push('view');
+            setError("")
+            })
+            .catch(err => {
+                setError(err.response.data.error)
+                
+            })   
+    }
+
+    const handleChanges = (e) =>{
+        setFormValues({
+            ...formValues,
+            [e.target.name]: e.target.value
+        })
+    }
     
     return(<ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
         </ModalContainer>
+        <FormGroup onSubmit={handleSubmit} >
+            <Label htmlFor="username">Username</Label>
+                <Input
+                 id="username"
+                 value={formValues.username}
+                 name="username"
+                 onChange={handleChanges}
+                 type="text"
+                 />
+
+            <Label htmlFor="password">Password</Label>
+                <Input
+                 id="password"
+                 value={formValues.password}
+                 name="password"
+                 onChange={handleChanges}
+                 type="text"
+                 />
+            <Button id="submit">Submit</Button>
+        </ FormGroup>
+        <p id="error">{error}</p>
     </ComponentContainer>);
 }
 
 export default Login;
 
 //Task List
-//1. Build login form DOM from scratch, making use of styled components if needed. Make sure the username input has id="username" and the password input as id="password".
+//1. Build login form DOM from scratch, making use of styled components if needed. Make sure the usernam    <Input has id="username" and the passwor  <Input as id="password".
 //2. Add in a p tag with the id="error" under the login form for use in error display.
 //3. Add in necessary local state to support login form and error display.
 //4. When login form is submitted, make an http call to the login route. Save the auth token on a successful response and redirect to view page.
@@ -45,7 +98,7 @@ const FormGroup = styled.form`
     padding:1rem;
 `
 
-const Input = styled.input`
+const Input = styled.input`  
     font-size: 1rem;
     padding: 1rem 0;
     width:100%;
