@@ -58,7 +58,7 @@ const Login = () => {
                  onChange={handleChanges}
                  type="text"
                  />
-            <Button id="submit">Submit</Button>
+            <Button id="submit">Log In</Button>
         </ FormGroup>
         <p id="error">{error}</p>
     </ComponentContainer>);
