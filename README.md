@@ -68,10 +68,10 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 ### Advanced Testing
 > *Add the following tests within Article.test.js.*
-* [ ] Build a test that shows the `Article` component, given the correct props, can render without errors.
-* [ ] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
-* [ ] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
-* [ ] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
+* [X] Build a test that shows the `Article` component, given the correct props, can render without errors.
+* [X] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
+* [X] The `Article` component should display "Associated Press" when an author attribute is not avalible. Build a test that verifies that that is true.
+* [X] Build a test that show that when the deleteButton is pressed on an Article, the handleDelete functional property is executed.
 
 > *Add the following tests within View.test.js.*
 * [ ] Build a test that shows the `View` component can render zero articles without errors. Make sure the mock service called made when View mounts.
@@ -121,9 +121,19 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers to the questions within `interview_answers.md` file. These will not be counted as a part of your sprint score but will be helpful for preparing you for your endorsement interview, and enhancing overall understanding.
 1. Explain what a token is used for.
+    Tokens are used to encrypt data in order to ensure a safe data transfer between clients and servers
 
 2. What steps can you take in your web apps to keep your data secure?
 
+    you can use tools like tokens and PRivate Routes in React. Having users authenticate theri credentials before accessing information displayed or contatined in components protectd by Private routes for example.
+
 3. Describe how web servers work.
 
+    Servers are composed of hardware and software to run. they are either small machines or a group of them  which are built to store data, which is then requested by clients (local apps and websites).
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+Create => Post,
+Read => Get,
+Update -=> Put,
+Delete => Delete
